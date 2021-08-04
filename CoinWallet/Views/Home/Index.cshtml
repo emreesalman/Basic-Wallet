@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CoinWallet.Models.Wallet>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Wallet</h1>
+
+<section>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Money Type
+                </th>
+                <th>
+                    Credits
+                </th>
+                <th>
+                    Credits
+                </th>
+                <th>
+                    Amount
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @using (Html.BeginForm("UpdateWallet","Wallet"))
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MoneyTypeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Balance)
+                        </td>
+                        <td>
+                            <input type="text"  id="walletId" name="walletId" value="@item.WalletId" hidden="hidden"/> 
+                            <input type="number" id="ammounth" name="ammounth"/>
+                            <input type="submit" id="type" name="type" value="Add" />
+                            <input type="submit" id="type" name="type" value="Withdraw" />
+                        </td>
+                     
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</section>

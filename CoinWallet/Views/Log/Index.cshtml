@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CoinWallet.Models.Logs>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Process Type
+            </th>
+            <th>
+                Process Ammount
+            </th>
+            <th>
+                Processing Time
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogType)
+                </td>
+                @if (item.LogType == "Add")
+                {
+                    <td>
+                        + @Html.DisplayFor(modelItem => item.ProcessAmmount)
+                    </td>
+                }
+                else if(item.LogType == "Withdraw")
+                {
+                    <td>
+                        - @Html.DisplayFor(modelItem => item.ProcessAmmount)
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        -
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProcessingTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
